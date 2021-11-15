@@ -1,2 +1,3 @@
 # twitter-go-api
- api in go as a backend to simulate twitter funcionality
+
+## API in Go as a backend to simulate twitter funcionality
