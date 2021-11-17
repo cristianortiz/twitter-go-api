@@ -5,6 +5,9 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/cristianortiz/twitter-go-api/middlew"
+	"github.com/cristianortiz/twitter-go-api/routers"
+
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -13,6 +16,9 @@ import (
 func ServerHandler() {
 	//captures http content and manage request cod responses
 	router := mux.NewRouter()
+	//route Register receibe POST request and use CheckDB middleware
+	//if CheckDB pass routerr.Register is executed
+	router.HandleFunc("/register", middlew.CheckDB(routers.Register)).Methods("POST")
 	//get environment variable who is define server port connection
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
