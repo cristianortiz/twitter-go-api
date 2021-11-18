@@ -8,7 +8,7 @@ import (
 	"github.com/cristianortiz/twitter-go-api/models"
 )
 
-//Register creates a new user in BD, receives the params from middleware CheckDB
+//Register creates a new user in BD, receives the flow control and request params from middleware CheckDB
 func Register(w http.ResponseWriter, r *http.Request) {
 	var t models.User
 	//decodes the body object of the http request (body is a stream can be procesed only in this line)
