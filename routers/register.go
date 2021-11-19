@@ -23,7 +23,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//password validation
-	if len(t.Email) < 6 {
+	if len(t.Password) < 6 {
 		http.Error(w, "Password minimum length is 6 characters ", 400)
 		return
 	}
