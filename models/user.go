@@ -15,6 +15,6 @@ type User struct {
 	Email    string             `bson:"email" json:"email"`
 	Password string             `bson:"password" json:"password,omitempty"`
 	Avatar   string             `bson:"avatar" json:"avatar,omitempty"`
-	Loction  string             `bson:"location" json:"location,omitempty"`
+	Location string             `bson:"location" json:"location,omitempty"`
 	WebSite  string             `bson:"website" json:"website,omitempty"`
 }

@@ -12,14 +12,19 @@ import (
 	"github.com/rs/cors"
 )
 
-//ServerHandler manage server setup and requests
+//ServerHandler manage server setup,  requests and defines routes
 func ServerHandler() {
 	//captures http content and manage request cod responses
 	router := mux.NewRouter()
 	//route Register receibe POST request and use CheckDB middleware
+
+	//----------ROUTES--------------------------------------------------
 	//if CheckDB pass routerr.Register is executed
 	router.HandleFunc("/register", middlew.CheckDB(routers.Register)).Methods("POST")
+	//login an existing user and return the jwt for authentication
+	router.HandleFunc("/login", middlew.CheckDB(routers.Login)).Methods("POST")
 	//get environment variable who is define server port connection
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
