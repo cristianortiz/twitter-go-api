@@ -23,22 +23,24 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "The username or password are incorrect"+err.Error(), 400)
 		return
 	}
-
+	//check if email is not empty
 	if len(t.Email) == 0 {
 		http.Error(w, "Email is required ", 400)
 		return
 	}
-
+	//check if email is already in use
 	userDoc, exists, _ := bd.UserExists(t.Email)
 	if !exists {
 		http.Error(w, "The username or password are incorrect ", 400)
 		return
 	}
+	//generates jwt for authentication
 	jwtToken, err := jwt.GeneratesJWT(userDoc)
 	if err != nil {
 		http.Error(w, "An error occurs to create the token "+err.Error(), 400)
 	}
-	response := models.LoginResponse{
+	//token returned as json
+	response := models.LoginToken{
 		Token: jwtToken,
 	}
 
