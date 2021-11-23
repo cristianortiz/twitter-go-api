@@ -23,6 +23,9 @@ func ServerHandler() {
 	router.HandleFunc("/register", middlew.CheckDB(routers.Register)).Methods("POST")
 	//login an existing user and return the jwt for authentication
 	router.HandleFunc("/login", middlew.CheckDB(routers.Login)).Methods("POST")
+	//inside checkDB midd put another one to verify the JWT
+	router.HandleFunc("/profile", middlew.CheckDB(middlew.ValidateJWT(routers.UserProfile))).Methods("GET")
+
 	//get environment variable who is define server port connection
 
 	PORT := os.Getenv("PORT")
