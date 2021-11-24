@@ -13,7 +13,7 @@ import (
 var Email string
 var userID string
 
-//ProcessToken validates the token and extract the values from the JWT, put the error object at the end of return parameters in func declarations
+//ProcessToken validates the token received in http response and extract the values from the JWT, put the error object at the end of return parameters in func declarations
 func ProcessToken(tk string) (*models.Claim, bool, string, error) {
 	//slice of bytes key defined in jwt.go
 	key := []byte("twitterGoAPI")

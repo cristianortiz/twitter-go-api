@@ -12,7 +12,7 @@ func ValidateJWT(next http.HandlerFunc) http.HandlerFunc {
 		//returns if the token send as parameter is a valid one
 		_, _, _, err := routers.ProcessToken(r.Header.Get("Authorization"))
 		if err != nil {
-			http.Error(w, "Error in token "+err.Error(), http.StatusBadRequest)
+			http.Error(w, "Error: "+err.Error(), http.StatusBadRequest)
 			return
 		}
 		//if there is no error in token next pass the control

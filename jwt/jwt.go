@@ -7,6 +7,7 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+//GeneratesJWT receives a models.user object and create the JWT from
 func GeneratesJWT(t models.User) (string, error) {
 	//the jwt token is an slice of bytes
 	key := []byte("twitterGoAPI")
