@@ -21,8 +21,13 @@ func ServerHandler() {
 	//----------ROUTES--------------------------------------------------
 	//if CheckDB pass routerr.Register is executed
 	router.HandleFunc("/register", middlew.CheckDB(routers.Register)).Methods("POST")
+	//uodate user data endpoint
+	router.HandleFunc("/update", middlew.CheckDB(middlew.ValidateJWT(routers.UpdateUser))).Methods("PUT")
 	//login an existing user and return the jwt for authentication
 	router.HandleFunc("/login", middlew.CheckDB(routers.Login)).Methods("POST")
+	//inside checkDB midd put another one to verify the JWT
+	router.HandleFunc("/profile", middlew.CheckDB(middlew.ValidateJWT(routers.UserProfile))).Methods("GET")
+
 	//get environment variable who is define server port connection
 
 	PORT := os.Getenv("PORT")
