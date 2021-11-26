@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func InsertNewTweet(t models.Tweets) (string, bool, error) {
+func InsertTweetDB(t models.TweetsModel) (string, bool, error) {
 	//define a new context for this operation and add it on top of inicial context
 	//(context.Background) but this mini context will exists only for 15 secs max
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
