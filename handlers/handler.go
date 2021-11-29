@@ -30,6 +30,7 @@ func ServerHandler() {
 	router.HandleFunc("/createtweet", middlew.CheckDB(middlew.ValidateJWT(routers.InsertTweet))).Methods("POST")
 	//get all the tweets paginated from an user
 	router.HandleFunc("/gettweets", middlew.CheckDB(middlew.ValidateJWT(routers.GetUsersTweets))).Methods("GET")
+	router.HandleFunc("/deletetweet", middlew.CheckDB(middlew.ValidateJWT(routers.DeleteTweet))).Methods("DELETE")
 
 	//get environment variable who is define server port connection
 
