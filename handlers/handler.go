@@ -28,6 +28,8 @@ func ServerHandler() {
 	router.HandleFunc("/profile", middlew.CheckDB(middlew.ValidateJWT(routers.UserProfile))).Methods("GET")
 	//inside checkDB midd put another one to verify the JWT
 	router.HandleFunc("/createtweet", middlew.CheckDB(middlew.ValidateJWT(routers.InsertTweet))).Methods("POST")
+	//get all the tweets paginated from an user
+	router.HandleFunc("/gettweets", middlew.CheckDB(middlew.ValidateJWT(routers.GetUsersTweets))).Methods("GET")
 
 	//get environment variable who is define server port connection
 
