@@ -39,6 +39,9 @@ func ServerHandler() {
 	router.HandleFunc("/getbanner", middlew.CheckDB(middlew.ValidateJWT(routers.GetBanner))).Methods("GET")
 	router.HandleFunc("/getavatar", middlew.CheckDB(middlew.ValidateJWT(routers.GetAvatar))).Methods("GET")
 
+	router.HandleFunc("/followuser", middlew.CheckDB(middlew.ValidateJWT(routers.CreateRelations))).Methods("POST")
+	router.HandleFunc("/unfollowuser", middlew.CheckDB(middlew.ValidateJWT(routers.DeleteRelations))).Methods("DELETE")
+
 	//get environment variable who is define server port connection
 
 	PORT := os.Getenv("PORT")

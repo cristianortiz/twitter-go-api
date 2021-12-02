@@ -12,8 +12,8 @@ import (
 
 // GetTweetsDB, query the Tweets DB documents and returns a slice with pagination of all the tweets requested
 func GetUserTweetsDB(ID string, page int64) ([]*models.UserTweetsModel, bool) {
-	//define a new context for this operation and add it on top of inicial context
 	//(context.Background) but this mini context will exists only for 15 secs max
+	//define a new context for this operation and add it on top of inicial context
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	//defer to executes this line as the last instruction in this function
 	defer cancel() //close the new mini context canceling the timeOut
