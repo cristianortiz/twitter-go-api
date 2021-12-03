@@ -42,6 +42,7 @@ func ServerHandler() {
 	router.HandleFunc("/followuser", middlew.CheckDB(middlew.ValidateJWT(routers.CreateRelations))).Methods("POST")
 	router.HandleFunc("/unfollowuser", middlew.CheckDB(middlew.ValidateJWT(routers.DeleteRelations))).Methods("DELETE")
 
+	router.HandleFunc("/getfollowed", middlew.CheckDB(middlew.ValidateJWT(routers.GetUserRelations))).Methods("GET")
 	//get environment variable who is define server port connection
 
 	PORT := os.Getenv("PORT")
