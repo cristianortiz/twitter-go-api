@@ -8,13 +8,10 @@ import (
 	"github.com/cristianortiz/twitter-go-api/models"
 )
 
+//GetUserRelations is the controller function to get from DB the user relations status
 func GetUserRelations(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get(("id"))
 
-	if len(ID) < 1 {
-		http.Error(w, "ID parameter is mandatory", http.StatusBadRequest)
-
-	}
 	var rel models.Relations
 	rel.UserID = userID //the global var set up through JWT
 	rel.FollowedUserID = ID
