@@ -26,6 +26,7 @@ func GetUserRelationsDB(t models.Relations) (bool, error) {
 	err := col.FindOne(ctx, condition).Decode(&result)
 	if err != nil {
 		fmt.Println(err.Error())
+		return false, err
 	}
 	return true, nil
 
