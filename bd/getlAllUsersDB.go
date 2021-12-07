@@ -55,7 +55,7 @@ func GetAllUsersDB(ID string, page int64, search string, relType string) ([]*mod
 		//get the ID of followed user and convert to string from the mongo ID format
 		r.FollowedUserID = s.ID.Hex()
 		include = false
-		founded, err = GetUserRelationsDB(r)
+		founded, _ = GetUserRelationsDB(r)
 		//for a new user that is not being followed
 		if relType == "new" && !founded {
 			include = true
